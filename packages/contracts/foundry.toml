@@ -1,0 +1,15 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc = "0.8.28"
+optimizer = true
+optimizer_runs = 1_000_000
+
+# fuzz / invariant 配置（周4 会大量用到，DESIGN.md §7）
+[fuzz]
+runs = 1024
+
+[invariant]
+runs = 256
+depth = 64
