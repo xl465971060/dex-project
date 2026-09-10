@@ -1,0 +1,11 @@
+{
+  "name": "@perpdex/contracts",
+  "private": true,
+  "scripts": {
+    "build": "forge build",
+    "test": "forge test",
+    "test:verbose": "forge test -vvv",
+    "coverage": "forge coverage",
+    "deps": "forge install foundry-rs/forge-std OpenZeppelin/openzeppelin-contracts"
+  }
+}

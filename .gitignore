@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.next/
+out/
+cache/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# 环境变量（只提交 .env.example）
+.env
+.env.local
+.env.*.local
+
+# 系统文件
+.DS_Store
+
