@@ -1,0 +1,57 @@
+// 数据模型骨架（周5 完整化，GUIDE）：
+//  - Trade：成交记录（由 ClearingHouse 事件解析而来）
+//  - PositionSnapshot：仓位快照（每次事件后落一条，用于历史回放/审计）
+//  - FundingTick：全局资金费率指数的历史点（K 线与费率曲线数据源）
+// 注意 BigInt 字段序列化给前端前要转 string（见 src/routes 的序列化约定）。
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Trade {
+  id        String   @id @default(cuid())
+  txHash    String
+  logIndex  Int
+  trader    String
+  isLong    Boolean
+  size      BigInt // WAD
+  price     BigInt // WAD
+  fee       BigInt // WAD
+  blockNumber BigInt
+  createdAt DateTime @default(now())
+
+  @@unique([txHash, logIndex])
+  @@map("trades")
+}
+
+model PositionSnapshot {
+  id          String   @id @default(cuid())
+  trader      String
+  isLong      Boolean
+  size        BigInt
+  entryPrice  BigInt
+  margin      BigInt
+  equity      BigInt
+  blockNumber BigInt
+  createdAt   DateTime @default(now())
+
+  @@index([trader, createdAt])
+  @@map("position_snapshots")
+}
+
+model FundingTick {
+  id          String   @id @default(cuid())
+  index       BigInt // 累计指数 F
+  rate        BigInt // 当期小时费率
+  oiLong      BigInt
+  oiShort     BigInt
+  blockNumber BigInt
+  createdAt   DateTime @default(now())
+
+  @@map("funding_ticks")
+}

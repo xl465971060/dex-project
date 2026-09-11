@@ -45,6 +45,6 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # - run: pnpm --filter @perpdex/api db:generate
+      - run: pnpm --filter @perpdex/api db:generate
       # 合约单独跑，这里排除掉
       - run: pnpm turbo build test typecheck --filter=!@perpdex/contracts
