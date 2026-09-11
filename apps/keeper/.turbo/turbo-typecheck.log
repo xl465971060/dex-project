@@ -1,0 +1,4 @@
+
+> @perpdex/keeper@ typecheck /home/administrator/dex-project/apps/keeper
+> tsc --noEmit
+

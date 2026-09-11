@@ -1,0 +1,4 @@
+
+> @perpdex/api@1.0.0 typecheck /home/administrator/dex-project/apps/api
+> tsc --noEmit
+

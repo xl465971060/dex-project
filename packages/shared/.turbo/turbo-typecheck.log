@@ -1,0 +1,4 @@
+
+> @perpdex/shared@1.0.0 typecheck /home/administrator/dex-project/packages/shared
+> tsc --noEmit
+

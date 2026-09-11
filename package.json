@@ -1,10 +1,24 @@
 {
   "name": "dex-project",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write .",
+    "contracts:build": "pnpm --filter @perpdex/contracts build",
+    "contracts:test": "pnpm --filter @perpdex/contracts test",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:migrate": "pnpm --filter @perpdex/api db:migrate"
   },
   "keywords": [],
   "author": "",
