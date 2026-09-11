@@ -1,4 +1,4 @@
 
-> @perpdex/api@1.0.0 build /home/administrator/dex-project/apps/api
+> @perpdex/api@ build /home/administrator/dex-project/apps/api
 > tsc -p tsconfig.json
 
